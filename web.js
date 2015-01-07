@@ -27,11 +27,11 @@ router.get('/', function(req, res) {
 
 app.use('/api', router);
 
-//var mongoose = require('mongoose');
-//mongoose.connect('mongodb://dferreira:dferreira@ds027718.mongolab.com:27718/falta-uno', function(err, res) {
-//    if(err) throw err;
-//    console.log('Connected to Database');
-//});
+var mongoose = require('mongoose');
+mongoose.connect('mongodb://dferreira:dferreira@ds027718.mongolab.com:27718/falta-uno', function(err, res) {
+    if(err) throw err;
+    console.log('Connected to Database');
+});
 
 //var models = require('./models/tvshow')(app, mongoose);
 var port_number = process.env.PORT || 3000;
