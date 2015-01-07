@@ -34,7 +34,8 @@ app.use('/api', router);
 //});
 
 //var models = require('./models/tvshow')(app, mongoose);
+var port_number = process.env.PORT || 3000;
 
-app.listen(3000, function() {
-  console.log("Node server running on http://localhost:3000");
+app.listen(port_number, function() {
+  console.log("Node server running on " + port_number);
 });
