@@ -7,6 +7,6 @@ app.get('/', function(req, res){
 
 var port = process.env.PORT || 5000;
 
-app.listen(post, function(){
+app.listen(port, function(){
     console.log('Listen port' + port);
 });
