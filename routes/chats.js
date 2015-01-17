@@ -1,8 +1,21 @@
+
+module.exports = function(router, app, mongoose) {
+    var models     = require('../models/chat')(app, mongoose);
+    /*Controllers*/
+    
+    var ChatsCtrl = require('../controllers/chats');
+    /*Routes*/
+    router.route('/chats')
+            .get(ChatsCtrl.findAllChats);
+};
+
+
+/*
 //File: routes/chats.js
 module.exports = function(app) {
 
-  var chat = require('../models/chat.js');
-
+  var Chat = require('../models/chat.js');
+    
     //GET - Return all chats in the DB
     findAllchats = function(req, res) {
         
@@ -12,7 +25,7 @@ module.exports = function(app) {
         
         console.log("Traeme todos");
         
-        chat.find(function(err, chats) {
+        Chat.find(function(err, chats) {
             if(!err) {
                 res.send(chats);
             } else {
@@ -116,4 +129,4 @@ module.exports = function(app) {
     app.post('/chatServices/chat', addchat);
     app.put('/chatServices/chat/:id', updatechat);
     app.delete('/chatServices/chat/:id', deletechat);
-}
+}*/

@@ -1,4 +1,4 @@
-exports = module.exports = function(app, mongoose) {
+module.exports = function(app, mongoose) {
 
 	var chatSchema = new mongoose.Schema({
         name:       { type: String },

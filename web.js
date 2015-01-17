@@ -9,29 +9,22 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(methodOverride());
 
-var router = express.Router();
-
-var models     = require('./models/chat')(app, mongoose);
-
-/*Controllers*/
-var ChatsCtrl = require('./controllers/chats');
-
-/*Routes*/
-router.route('/chats')
-        .get(ChatsCtrl.findAllChats);
-
-
-router.get('/', function(req, res) {
-  res.send("Hello world!");
-});
-
-app.use('/api', router);
-
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://dferreira:dferreira@ds027718.mongolab.com:27718/falta-uno', function(err, res) {
     if(err) throw err;
     console.log('Connected to Database');
 });
+
+var router = express.Router();
+
+router.get('/', function(req, res) { res.send("Welcome to Falta Uno!"); });
+
+var chatRouter = require("./routes/chats")(router, app, mongoose);
+var partidoRouter = require("./routes/partidos")(router, app, mongoose);
+
+app.use('/faltaUno', router);
+
+
 
 //var models = require('./models/tvshow')(app, mongoose);
 var port_number = process.env.PORT || 3000;

@@ -1,5 +1,5 @@
-//var mongoose = require('mongoose');
-//var chat  = mongoose.model('Chat');
+var mongoose = require('mongoose');
+var chat  = mongoose.model('Chat');
 
 //GET - Return all tvshows in the DB
 exports.findAllChats = function(req, res) {
@@ -38,6 +38,7 @@ exports.findAllChats = function(req, res) {
 //        }
 //    ];
 //    res.send(chatsR);
+    
     chat.find(function(err, chats) {
         if(!err) {
             res.send(chats);
