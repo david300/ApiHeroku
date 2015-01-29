@@ -40,7 +40,7 @@ exports.nuevoPartido = function(req, res){
         }
     });
 
-    res.send(Partido);
+    res.send(partido);
 };
 
 
