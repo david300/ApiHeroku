@@ -5,6 +5,6 @@ module.exports = function(router, app, mongoose) {
     var controller = require('../controllers/partidos');
     
     /*Routes*/
-    router.route('/partidos').get(controller.traerPartidos);
-    router.route('/partido').post(controller.nuevoPartido);
+    router.route('/partidos/get').get(controller.traerPartidos);
+    router.route('/partidos/add').post(controller.nuevoPartido);
 };
