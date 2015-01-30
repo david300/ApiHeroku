@@ -24,15 +24,13 @@ var partidoRouter = require("./routes/partidos")(router, app, mongoose);
 
 app.use('/faltaUno', router);
 
-var allowCrossDomain = function(req, res, next) {
-    res.header('Access-Control-Allow-Origin', "*");
-    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-    res.header('Access-Control-Allow-Headers', 'Content-Type');
-};
-
-app.configure(function() {
-    app.use(allowCrossDomain);
+app.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+  res.header("Access-Control-Allow-Headers", "X-Requested-With, Content-Type");
+  next();
 });
+
 
 //var models = require('./models/tvshow')(app, mongoose);
 var port_number = process.env.PORT || 3000;
