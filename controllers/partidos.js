@@ -2,8 +2,9 @@ var mongoose = require('mongoose');
 var Partido  = mongoose.model('Partido');
 
 exports.traerPartidos = function(req, res){
-//    res.header("Access-Control-Allow-Origin", "*");
-//    res.header("Access-Control-Allow-Headers", "X-Requested-With");
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
     
     Partido.find(function(err, partidos) {
         if(!err) {
@@ -15,8 +16,9 @@ exports.traerPartidos = function(req, res){
 };
 
 exports.nuevoPartido = function(req, res){
-//    res.header("Access-Control-Allow-Origin", "*");
-//    res.header("Access-Control-Allow-Headers", "X-Requested-With");
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
     
     console.log('POST - Create Partido');
     console.log(req.body);
