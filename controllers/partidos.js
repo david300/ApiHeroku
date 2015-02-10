@@ -15,6 +15,26 @@ exports.traerPartidos = function(req, res){
     });
 };
 
+exports.traerPartidosCernanos = function(req, res){
+    var params = req.params;
+    
+    var lat = params.lat;
+    var lng = params.lng;
+    var idUser = params.idUser;
+    var ratio = params.ratio; //Se refiere al radio en Km para poder buscar los partidos
+    
+//    Partido.find(function(err, partidos) {
+//        if(!err) {
+//            res.send(partidos);
+//        } else {
+//            console.log('ERROR: ' + err);
+//        }
+//    });
+    
+    Persona.find()
+        .where('fechaPartido').lt(Date.now())
+};
+
 exports.nuevoPartido = function(req, res){
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "X-Requested-With");
@@ -31,7 +51,11 @@ exports.nuevoPartido = function(req, res){
         faltantes:          req.body.seasons,
         fechaPartido:       req.body.fechaPartido,
         fecha:              req.body.fecha,
-        ubicacion:          req.body.ubicacion
+        direccion:          req.body.ubicacion.direccion,
+        ubicacion:          [
+                                req.body.ubicacion.lng, 
+                                req.body.ubicacion.lat
+                            ]
     });
 
     partido.save(function(err) {
